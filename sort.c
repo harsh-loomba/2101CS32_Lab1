@@ -118,6 +118,8 @@ void merge(int arr[], int left, int right, int split)
         j++;
         k++;
     }
+
+    return;
 }
 
 void MergeSort(int arr[], int left, int right)
@@ -130,9 +132,41 @@ void MergeSort(int arr[], int left, int right)
 
         merge(arr, left, right, split);
     }
+
+    return;
 }
 
-void QuickSort(int arr[], int n);
+int partition(int arr[], int left, int right)
+{
+    int pivot = arr[right];
+    int i = left - 1;
+
+    for (int j = left; j <= right; j++)
+    {
+        if (arr[j] < pivot)
+        {
+            i++;
+            swap(&arr[i], &arr[j]);
+        }
+    }
+
+    swap(&arr[i + 1], &arr[right]);
+
+    return (i + 1);
+}
+
+void QuickSort(int arr[], int left, int right)
+{
+    if (left < right)
+    {
+        int part_index = partition(arr, left, right);
+
+        QuickSort(arr, left, part_index - 1);
+        QuickSort(arr, part_index + 1, right);
+    }
+
+    return;
+}
 
 int main()
 {
@@ -167,7 +201,7 @@ int main()
         MergeSort(arr, 0, n - 1);
         break;
     case 5:
-        // QuickSort(arr, n);
+        QuickSort(arr, 0, n - 1);
         break;
     default:
         srno = -1;
