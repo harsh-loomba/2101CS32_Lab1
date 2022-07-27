@@ -8,7 +8,7 @@ int main()
     scanf("%lf %lf", &x, &y);
 
     int srno;
-    printf("Enter the code for the following-\n1. Add\n2. Subtract\n3. Product\n4. Divide (First Number by Second Number)\n5. Modulo(First Number by Second Number)\n");
+    printf("Enter the code for the following-\n1. Add\n2. Subtract\n3. Product\n4. Divide (First Number by Second Number)\n");
     scanf("%d", &srno);
 
     switch (srno)
@@ -27,14 +27,10 @@ int main()
         {
             srno = -1;
         }
-        // ans = divide(x, y);
-        break;
-    case 5:
-        if (y == 0)
+        else
         {
-            srno = -1;
+            ans = x / y;
         }
-        // ans = (x, y);
         break;
     default:
         srno = 0;
