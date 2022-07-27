@@ -4,13 +4,17 @@ int main()
 {
     printf("***PROGRAM TO PERFORM AN ARITHMETIC OPERATION ON TWO NUMBERS***\n\n");
     double x, y, ans;
+
+    // Input Values
     printf("Enter two numbers separated by x space: ");
     scanf("%lf %lf", &x, &y);
 
+    // Input Operation Code
     int srno;
     printf("Enter the code for the following-\n1. Add\n2. Subtract\n3. Product\n4. Divide (First Number by Second Number)\n");
     scanf("%d", &srno);
 
+    // Implementing Operations
     switch (srno)
     {
     case 1:
@@ -36,6 +40,7 @@ int main()
         srno = 0;
     }
 
+    // Printing Output or Error
     if (srno == 0)
     {
         printf("\nERROR: Enter Valid Code.\n");

@@ -3,6 +3,8 @@
 
 void printarr(int arr[], int n)
 {
+    // Array is printed with single space gap between elements
+
     printf("\n");
     for (int i = 0; i < n; i++)
     {
@@ -14,6 +16,8 @@ void printarr(int arr[], int n)
 
 void swap(int *a, int *b)
 {
+    // Values are swapped using pointers
+
     int tmp = *a;
     *a = *b;
     *b = tmp;
@@ -170,22 +174,29 @@ void QuickSort(int arr[], int left, int right)
 
 int main()
 {
+    printf("***PROGRAM TO SORT AN ARRAY USING DIFFERENT SORTING METHODS***\n\n");
+
+    // Input size
     int n, srno;
     printf("Enter the Size of the array: ");
     scanf("%d", &n);
 
+    // Dynamically allocating space to the array
     int *arr;
     arr = (int *)malloc(n * sizeof(int));
     printf("Enter %d integers separated by a space:\n", n);
 
+    // Input elements of the array
     for (int i = 0; i < n; i++)
     {
         scanf("%d", &arr[i]);
     }
 
+    // Input Sorting algorithm to be used
     printf("Enter the code for the following-\n1. Insertion Sort\n2. Selection Sort\n3. Bubble Sort\n4. Merge Sort\n5. Quick Sort\n");
     scanf("%d", &srno);
 
+    // Implementing the sort
     switch (srno)
     {
     case 1:
@@ -204,17 +215,18 @@ int main()
         QuickSort(arr, 0, n - 1);
         break;
     default:
-        srno = -1;
+        srno = 0;
     }
 
-    if (srno == -1)
-    {
-        printf("ERROR: Enter Valid Code.\n");
-    }
-    else
+    // Printing Output or Error
+    if (srno)
     {
         printf("Sorted array is:");
         printarr(arr, n);
+    }
+    else
+    {
+        printf("ERROR: Enter Valid Code.\n");
     }
 
     free(arr);
