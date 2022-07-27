@@ -3,18 +3,18 @@
 int main()
 {
     printf("***PROGRAM TO PERFORM AN ARITHMETIC OPERATION ON TWO NUMBERS***\n\n");
-    long double x, y, ans;
+    double x, y, ans;
     printf("Enter two numbers separated by x space: ");
-    scanf("%lf%lf", &x, &y);
+    scanf("%lf %lf", &x, &y);
 
     int srno;
-    printf("Enter the code for the following-\n1. Add\n2. Subtract\n3. Product\n4. Divide (First Number by Second Number)\n5. Modulo(First Number by Second Number)");
+    printf("Enter the code for the following-\n1. Add\n2. Subtract\n3. Product\n4. Divide (First Number by Second Number)\n5. Modulo(First Number by Second Number)\n");
     scanf("%d", &srno);
 
     switch (srno)
     {
     case 1:
-        // ans = add(x, y);
+        ans = x + y;
         break;
     case 2:
         // ans = subtract(x, y);
@@ -44,13 +44,13 @@ int main()
     {
         printf("\nERROR: Enter Valid Code.\n");
     }
-    else if (srno = -1)
+    else if (srno == -1)
     {
         printf("\nERROR: Cannot Divide by Zero.\n");
     }
     else
     {
-        printf("\nAnswer: %d\n", ans);
+        printf("\nAnswer: %lf\n", ans);
     }
 
     return 0;
