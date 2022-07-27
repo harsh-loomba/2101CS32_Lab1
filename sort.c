@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+
 void printarr(int arr[], int n)
 {
     printf("\n");
@@ -57,7 +58,20 @@ void SelectionSort(int arr[], int n)
     return;
 }
 
-void BubbleSort(int arr[], int n);
+void BubbleSort(int arr[], int n)
+{
+    for (int i = 0; i < n - 1; i++)
+    {
+        for (int j = 0; j < n - i - 1; j++)
+        {
+            if (arr[j] > arr[j + 1])
+            {
+                swap(&arr[j], &arr[j + 1]);
+            }
+        }
+    }
+}
+
 void MergeSort(int arr[], int n);
 void QuickSort(int arr[], int n);
 
@@ -88,7 +102,7 @@ int main()
         SelectionSort(arr, n);
         break;
     case 3:
-        // BubbleSort(arr, n);
+        BubbleSort(arr, n);
         break;
     case 4:
         // MergeSort(arr, n);
