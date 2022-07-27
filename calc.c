@@ -17,7 +17,7 @@ int main()
         ans = x + y;
         break;
     case 2:
-        // ans = subtract(x, y);
+        ans = x - y;
         break;
     case 3:
         // ans = multiply(x, y);
