@@ -11,6 +11,14 @@ void printarr(int arr[], int n)
     return;
 }
 
+void swap(int *a, int *b)
+{
+    int tmp = *a;
+    *a = *b;
+    *b = tmp;
+    return;
+}
+
 void InsertionSort(int arr[], int n)
 {
     int chk, j;
@@ -31,7 +39,24 @@ void InsertionSort(int arr[], int n)
     return;
 }
 
-void SelectionSort(int arr[], int n);
+void SelectionSort(int arr[], int n)
+{
+    int min;
+    for (int i = 0; i < n - 1; i++)
+    {
+        min = i;
+        for (int j = i + 1; j < n; j++)
+        {
+            if (arr[j] < arr[min])
+            {
+                min = j;
+            }
+        }
+        swap(&arr[min], &arr[i]);
+    }
+    return;
+}
+
 void BubbleSort(int arr[], int n);
 void MergeSort(int arr[], int n);
 void QuickSort(int arr[], int n);
@@ -60,7 +85,7 @@ int main()
         InsertionSort(arr, n);
         break;
     case 2:
-        // SelectionSort(arr, n);
+        SelectionSort(arr, n);
         break;
     case 3:
         // BubbleSort(arr, n);
