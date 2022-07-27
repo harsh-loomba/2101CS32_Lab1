@@ -20,7 +20,7 @@ int main()
         ans = x - y;
         break;
     case 3:
-        // ans = multiply(x, y);
+        ans = x * y;
         break;
     case 4:
         if (y == 0)
