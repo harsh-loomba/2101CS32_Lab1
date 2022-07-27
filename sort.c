@@ -1,5 +1,5 @@
 #include <stdio.h>
-
+#include <stdlib.h>
 void printarr(int arr[], int n)
 {
     printf("\n");
@@ -11,7 +11,26 @@ void printarr(int arr[], int n)
     return;
 }
 
-void InsertionSort(int arr[], int n);
+void InsertionSort(int arr[], int n)
+{
+    int chk, j;
+
+    for (int i = 1; i < n; i++)
+    {
+        chk = arr[i];
+        j = i - 1;
+
+        while ((j >= 0) && (arr[j] > chk))
+        {
+            arr[j + 1] = arr[j];
+            j = j - 1;
+        }
+        arr[j + 1] = chk;
+    }
+
+    return;
+}
+
 void SelectionSort(int arr[], int n);
 void BubbleSort(int arr[], int n);
 void MergeSort(int arr[], int n);
@@ -21,22 +40,24 @@ int main()
 {
     int n, srno;
     printf("Enter the Size of the array: ");
-    scanf("%d ", &n);
+    scanf("%d", &n);
 
-    int arr[n];
+    int *arr;
+    arr = (int *)malloc(n * sizeof(int));
     printf("Enter %d integers separated by a space:\n", n);
+
     for (int i = 0; i < n; i++)
     {
         scanf("%d", &arr[i]);
     }
 
-    printf("Enter the code for the following-\n1. Insertion Sort\n2.Selection Sort\n3.Bubble Sort\n4. Merge Sort\n5. Quick Sort\n");
+    printf("Enter the code for the following-\n1. Insertion Sort\n2. Selection Sort\n3. Bubble Sort\n4. Merge Sort\n5. Quick Sort\n");
     scanf("%d", &srno);
 
     switch (srno)
     {
     case 1:
-        // InsertionSort(arr, n);
+        InsertionSort(arr, n);
         break;
     case 2:
         // SelectionSort(arr, n);
@@ -63,6 +84,8 @@ int main()
         printf("Sorted array is:");
         printarr(arr, n);
     }
+
+    free(arr);
 
     return 0;
 }
