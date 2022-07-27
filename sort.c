@@ -72,7 +72,66 @@ void BubbleSort(int arr[], int n)
     }
 }
 
-void MergeSort(int arr[], int n);
+void merge(int arr[], int left, int right, int split)
+{
+    int size1 = split - left + 1, size2 = right - split;
+
+    int L_arr[size1], R_arr[size2];
+
+    for (int i = 0; i < size1; i++)
+    {
+        L_arr[i] = arr[left + i];
+    }
+
+    for (int i = 0; i < size2; i++)
+    {
+        R_arr[i] = arr[split + 1 + i];
+    }
+
+    int i = 0, j = 0, k = left;
+
+    while ((i < size1) && (j < size2))
+    {
+        if (L_arr[i] < R_arr[j])
+        {
+            arr[k] = L_arr[i];
+            i++;
+        }
+        else
+        {
+            arr[k] = R_arr[j];
+            j++;
+        }
+        k++;
+    }
+
+    while (i < size1)
+    {
+        arr[k] = L_arr[i];
+        i++;
+        k++;
+    }
+
+    while (j < size2)
+    {
+        arr[k] = R_arr[j];
+        j++;
+        k++;
+    }
+}
+
+void MergeSort(int arr[], int left, int right)
+{
+    if (left < right)
+    {
+        int split = left + (right - left) / 2;
+        MergeSort(arr, left, split);
+        MergeSort(arr, split + 1, right);
+
+        merge(arr, left, right, split);
+    }
+}
+
 void QuickSort(int arr[], int n);
 
 int main()
@@ -105,7 +164,7 @@ int main()
         BubbleSort(arr, n);
         break;
     case 4:
-        // MergeSort(arr, n);
+        MergeSort(arr, 0, n - 1);
         break;
     case 5:
         // QuickSort(arr, n);
